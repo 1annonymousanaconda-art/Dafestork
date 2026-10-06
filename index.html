@@ -308,6 +308,62 @@
     background:var(--reed);color:var(--paper);padding:12px 20px;border-radius:999px;font-weight:600;
     opacity:0;pointer-events:none;transition:.25s}
   .toast.show{opacity:1;transform:translateX(-50%)}
+
+  /* ---- live chat (visitor side) ---- */
+  .chat-fab{position:fixed;right:20px;bottom:20px;z-index:80;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;
+    background:var(--gold);color:var(--reed);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(14,42,43,.55);transition:transform .2s}
+  .chat-fab:hover{transform:translateY(-2px)}
+  .chat-fab svg{width:26px;height:26px}
+  .chat-badge{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--coral);
+    color:#fff;font:700 12px/20px "Public Sans",sans-serif;text-align:center;display:none}
+  .chat-panel{position:fixed;right:20px;bottom:92px;z-index:80;width:min(360px,calc(100vw - 24px));height:min(520px,calc(100vh - 120px));
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;display:none;flex-direction:column;overflow:hidden;
+    box-shadow:0 30px 70px -20px rgba(8,22,22,.55)}
+  .chat-panel.open{display:flex}
+  .chat-head{background:var(--reed);color:var(--paper);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+  .chat-head b{font-family:"Bricolage Grotesque",serif;font-size:17px}
+  .chat-head small{display:block;color:var(--sky);font-size:12px}
+  .chat-head button{background:none;border:0;color:var(--sky);font-size:24px;cursor:pointer;line-height:1}
+  .chat-name{padding:8px 14px;border-bottom:1px solid var(--line);background:#fff}
+  .chat-name input{width:100%;border:0;outline:0;font:inherit;font-size:13px;background:transparent;padding:2px 0}
+  .chat-msgs,.tmsgs{overflow:auto;display:flex;flex-direction:column;gap:10px}
+  .chat-msgs{flex:1;padding:14px}
+  .cm{max-width:84%;display:flex;flex-direction:column}
+  .cm.customer{align-self:flex-end;align-items:flex-end}
+  .cm.staff{align-self:flex-start;align-items:flex-start}
+  .cb{padding:9px 13px;font-size:14px;line-height:1.4;white-space:pre-wrap;word-break:break-word;border-radius:14px}
+  .cm.customer .cb{background:var(--reed);color:var(--paper);border-bottom-right-radius:4px}
+  .cm.staff .cb{background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+  .ct{font-size:11px;color:var(--muted);margin-top:3px}
+  .chat-form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#fff;align-items:flex-end}
+  .chat-form textarea{flex:1;resize:none;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font:inherit;font-size:14px;max-height:100px;outline:0}
+  .chat-form textarea:focus{border-color:var(--dusk)}
+  .chat-send{height:38px;padding:0 16px;border:0;border-radius:12px;background:var(--reed);color:var(--paper);font-weight:600;cursor:pointer}
+  .chat-warn{margin:10px 14px 0;font-size:12px;color:#7a5410;background:rgba(232,176,75,.15);border-radius:8px;padding:8px 10px;display:none}
+  /* ---- live chat (staff inbox) ---- */
+  .tabs{display:flex;gap:6px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+  .tab{background:none;border:0;padding:10px 14px;font:600 14px "Public Sans",sans-serif;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+  .tab.on{color:var(--reed);border-bottom-color:var(--gold)}
+  .cnt{background:var(--coral);color:#fff;border-radius:10px;font-size:11px;padding:1px 7px;margin-left:4px}
+  .cnt:empty{display:none}
+  .convo{border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:8px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:center}
+  .convo:hover{border-color:var(--dusk)}
+  .convo.active{border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,176,75,.2)}
+  .convo .who{font-weight:600;font-size:14px}
+  .convo .pv{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px}
+  .convo .grow{flex:1;min-width:0}
+  .convo .tm{font-size:11px;color:var(--muted)}
+  .convo .need{width:10px;height:10px;border-radius:50%;background:var(--coral);flex:none}
+  .thread{border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:14px;overflow:hidden}
+  .thread-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;font-size:14px}
+  .tmsgs{max-height:320px;padding:14px;background:var(--paper)}
+  .tmsgs .cm.staff{align-self:flex-end;align-items:flex-end}
+  .tmsgs .cm.customer{align-self:flex-start;align-items:flex-start}
+  .tmsgs .cm.staff .cb{background:var(--reed);color:var(--paper);border:0;border-radius:14px 14px 4px 14px}
+  .tmsgs .cm.customer .cb{background:#fff;color:inherit;border:1px solid var(--line);border-radius:14px 14px 14px 4px}
+  .thread-form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);align-items:flex-end}
+  .thread-form textarea{flex:1;resize:vertical;min-height:40px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;font-size:14px}
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -616,6 +672,26 @@
   <div class="dbody" id="admin-body"></div>
 </aside>
 
+<!-- ============ LIVE CHAT ============ -->
+<button class="chat-fab" id="chat-fab" onclick="toggleChat()" aria-label="Chat with us">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+  <span class="chat-badge" id="chat-badge"></span>
+</button>
+<section class="chat-panel" id="chat-panel" aria-label="Chat with Stork support">
+  <div class="chat-head">
+    <div><b>Chat with Stork</b><small>Ask us about your parcel</small></div>
+    <button onclick="toggleChat()" aria-label="Close chat">×</button>
+  </div>
+  <div class="chat-name"><input id="chat-name" maxlength="40" placeholder="Your name (optional)" autocomplete="name"></div>
+  <div class="chat-warn" id="chat-warn">Chat isn't switched on for this site yet.</div>
+  <div class="chat-msgs" id="chat-msgs"></div>
+  <div class="chat-form">
+    <textarea id="chat-input" rows="1" maxlength="1000" placeholder="Type a message…"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"></textarea>
+    <button class="chat-send" onclick="sendChat()">Send</button>
+  </div>
+</section>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -868,7 +944,7 @@ function renderAdmin(){
   }
   const store = loadStore();
   const codes = Object.keys(store);
-  body.innerHTML = `
+  const shipsHtml = `
     <div class="note">Edits here update what every visitor sees on the tracking page. Data is stored ${storageMode()}.</div>
     <div class="toolbar">
       <button class="btn small" onclick="newShipment()">+ New shipment</button>
@@ -877,8 +953,16 @@ function renderAdmin(){
     </div>
     <div id="ship-list">${codes.map(c=>shipRow(c,store[c])).join("")||'<p style="color:var(--muted)">No shipments yet.</p>'}</div>
     <div id="editor"></div>`;
-  if(selected && store[selected]) renderEditor(selected, store[selected]);
+  body.innerHTML = `<div class="tabs">
+      <button class="tab ${adminTab==='ships'?'on':''}" onclick="setTab('ships')">Shipments</button>
+      <button class="tab ${adminTab==='chats'?'on':''}" onclick="setTab('chats')">Chats<span class="cnt" id="chat-cnt"></span></button>
+    </div>` + (adminTab==='chats' ? '<div id="inbox"></div>' : shipsHtml);
+  if(adminTab==='chats') renderInbox();
+  else if(selected && store[selected]) renderEditor(selected, store[selected]);
+  updateChatCount();
 }
+let adminTab = 'ships';
+function setTab(t){ adminTab=t; renderAdmin(); }
 
 function storageMode(){
   if(sb) return "in your Supabase project — shared across every device";
@@ -1057,6 +1141,195 @@ async function initAuth(){
   });
   if(authed && document.getElementById('drawer').classList.contains('open')) renderAdmin();
 }
+
+
+/* ---------- live chat ---------- */
+const CHAT_LS = "stork_chat_v1";            // used only when Supabase isn't configured
+const memKV = {};
+function lsGet(k){ try{ const v=localStorage.getItem(k); return v===null ? (memKV[k]??null) : v; }catch(e){ return memKV[k]??null; } }
+function lsSet(k,v){ memKV[k]=v; try{ localStorage.setItem(k,v); }catch(e){} }
+function newId(){
+  if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return (c==='x'?r:(r&3|8)).toString(16);});
+}
+function localChat(){ try{ return JSON.parse(lsGet(CHAT_LS)||"[]"); }catch(e){ return []; } }
+function saveLocalChat(a){ lsSet(CHAT_LS, JSON.stringify(a.slice(-500))); }
+function fmtT(iso){
+  const d=new Date(iso); if(isNaN(d)) return "";
+  const same = d.toDateString()===new Date().toDateString();
+  return same ? d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})
+              : d.toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+}
+function msgHtml(m){
+  return `<div class="cm ${m.sender==='staff'?'staff':'customer'}"><div class="cb">${escapeHtml(m.body)}</div><div class="ct">${escapeHtml(fmtT(m.created_at))}</div></div>`;
+}
+
+/* visitor side */
+const chat = { id:null, name:"", msgs:[], open:false, err:false };
+function chatInit(){
+  chat.id = lsGet('stork_chat_id'); if(!chat.id){ chat.id=newId(); lsSet('stork_chat_id', chat.id); }
+  chat.name = lsGet('stork_chat_name') || "";
+  document.getElementById('chat-name').value = chat.name;
+  renderChat();
+  chatPoll();
+  setInterval(chatPoll, 5000);
+  setInterval(staffPoll, 6000);
+  const ta=document.getElementById('chat-input');
+  ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,100)+'px'; });
+}
+function staffCount(){ return chat.msgs.filter(m=>m.sender==='staff').length; }
+function toggleChat(){
+  chat.open = !chat.open;
+  document.getElementById('chat-panel').classList.toggle('open', chat.open);
+  if(chat.open){ lsSet('stork_chat_seen', String(staffCount())); renderChat(true); chatPoll(); setTimeout(()=>document.getElementById('chat-input').focus(),50); }
+  else renderChat();
+}
+async function fetchChat(){
+  if(sb){
+    const {data,error} = await sb.rpc('get_chat', {p_chat_id: chat.id});
+    if(error){ chat.err = true; return null; }
+    chat.err = false; return data || [];
+  }
+  return localChat().filter(m=>m.chat_id===chat.id);
+}
+async function chatPoll(){
+  if(!chat.open && !lsGet('stork_chat_started')) return;      // nothing to check until they've written once
+  const d = await fetchChat();
+  if(!d){ renderChat(); return; }
+  const grew = d.length !== chat.msgs.length;
+  chat.msgs = d;
+  if(chat.open) lsSet('stork_chat_seen', String(staffCount()));
+  renderChat(grew);
+}
+function renderChat(scroll){
+  const box = document.getElementById('chat-msgs');
+  const hello = `<div class="cm staff"><div class="cb">Hi! Send us a message about your shipment and a member of our team will reply here. Your tracking number is attached automatically if you've looked one up.</div></div>`;
+  const stick = scroll || (box.scrollHeight - box.scrollTop - box.clientHeight < 60);
+  box.innerHTML = hello + chat.msgs.map(msgHtml).join("");
+  if(stick) box.scrollTop = box.scrollHeight;
+  document.getElementById('chat-warn').style.display = chat.err ? 'block' : 'none';
+  const unread = chat.open ? 0 : Math.max(0, staffCount() - (parseInt(lsGet('stork_chat_seen')||"0",10)||0));
+  const b = document.getElementById('chat-badge');
+  b.textContent = unread; b.style.display = unread ? 'block' : 'none';
+}
+async function sendChat(){
+  const inp = document.getElementById('chat-input');
+  const body = inp.value.trim().slice(0,1000); if(!body) return;
+  const nm = document.getElementById('chat-name').value.trim().slice(0,40);
+  chat.name = nm; lsSet('stork_chat_name', nm);
+  const code = (document.getElementById('r-code').textContent||"").trim() || null;
+  const row = {chat_id:chat.id, sender:'customer', name:nm||null, code, body};
+  inp.value=""; inp.style.height='auto';
+  const tmp = {...row, id:'tmp'+Date.now(), created_at:new Date().toISOString()};
+  chat.msgs.push(tmp); renderChat(true);
+  lsSet('stork_chat_started','1');
+  if(sb){
+    const {error} = await sb.from('messages').insert(row);
+    if(error){
+      chat.msgs = chat.msgs.filter(m=>m!==tmp); chat.err = true; renderChat(true);
+      inp.value = body; toast("Couldn't send your message"); return;
+    }
+    chat.err = false;
+  } else {
+    const a = localChat(); a.push({...row, id:Date.now()+Math.random(), created_at:tmp.created_at}); saveLocalChat(a);
+  }
+  chatPoll();
+}
+
+/* staff side */
+let inbox = [], activeChat = null, threadBuilt = null, inboxErr = "";
+async function loadInbox(){
+  if(sb){
+    const {data,error} = await sb.from('messages').select('*').order('created_at',{ascending:true}).limit(1000);
+    if(error){ inboxErr = error.message; return false; }
+    inboxErr = ""; inbox = data || [];
+  } else { inboxErr = ""; inbox = localChat(); }
+  return true;
+}
+function convos(){
+  const by = {};
+  inbox.forEach(m=>{ (by[m.chat_id] = by[m.chat_id] || []).push(m); });
+  return Object.keys(by).map(id=>{
+    const msgs = by[id], last = msgs[msgs.length-1];
+    const named = msgs.slice().reverse().find(m=>m.sender==='customer' && m.name);
+    const coded = msgs.slice().reverse().find(m=>m.code);
+    return {id, msgs, last, name: named?named.name:"Visitor "+id.slice(0,4), code: coded?coded.code:"", needs: last.sender==='customer'};
+  }).sort((a,b)=> new Date(b.last.created_at) - new Date(a.last.created_at));
+}
+function updateChatCount(){
+  const el = document.getElementById('chat-cnt'); if(!el) return;
+  const n = authed ? convos().filter(c=>c.needs).length : 0;
+  el.textContent = n || "";
+}
+async function staffPoll(){
+  if(!authed) return;
+  const ok = await loadInbox();
+  updateChatCount();
+  if(ok && adminTab==='chats' && document.getElementById('inbox')) drawInbox();
+}
+async function renderInbox(){
+  const box = document.getElementById('inbox'); if(!box) return;
+  threadBuilt = null;
+  box.innerHTML = `<div class="note" style="background:rgba(63,157,108,.1);border-color:rgba(63,157,108,.35);color:#1f5e3d">Messages from visitors appear here. A red dot means the visitor is waiting for a reply.</div>
+    <div id="inbox-list"></div><div id="inbox-thread"></div>`;
+  await loadInbox(); updateChatCount(); drawInbox();
+}
+function drawInbox(){
+  const list = document.getElementById('inbox-list'); if(!list) return;
+  if(inboxErr){
+    list.innerHTML = `<div class="note">Couldn't load chats: ${escapeHtml(inboxErr)}. Make sure the <b>messages</b> table has been created in Supabase and you're signed in.</div>`;
+    return;
+  }
+  const cs = convos();
+  list.innerHTML = cs.length ? cs.map(c=>`<div class="convo ${activeChat===c.id?'active':''}" onclick="openThread('${c.id}')">
+      ${c.needs?'<span class="need" title="Waiting for a reply"></span>':'<span style="width:10px;flex:none"></span>'}
+      <div class="grow"><div class="who">${escapeHtml(c.name)}${c.code?' · <span class="mono" style="font-weight:400">'+escapeHtml(c.code)+'</span>':''}</div>
+      <div class="pv">${c.last.sender==='staff'?'You: ':''}${escapeHtml(c.last.body)}</div></div>
+      <div class="tm">${escapeHtml(fmtT(c.last.created_at))}</div></div>`).join("")
+    : '<p style="color:var(--muted)">No messages yet.</p>';
+  const th = document.getElementById('inbox-thread');
+  const cur = cs.find(c=>c.id===activeChat);
+  if(!cur){ th.innerHTML=""; threadBuilt=null; return; }
+  if(threadBuilt !== cur.id){
+    th.innerHTML = `<div class="thread">
+      <div class="thread-head"><span>${escapeHtml(cur.name)}${cur.code?' · '+escapeHtml(cur.code):''}</span>
+        <button class="btn small danger" style="height:32px" onclick="deleteChat()">Delete chat</button></div>
+      <div class="tmsgs" id="t-msgs"></div>
+      <div class="thread-form"><textarea id="t-input" rows="2" maxlength="1000" placeholder="Write a reply…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();staffReply();}"></textarea>
+        <button class="btn small" onclick="staffReply()">Send</button></div></div>`;
+    threadBuilt = cur.id;
+    setTimeout(()=>{ const t=document.getElementById('t-input'); if(t) t.focus(); },50);
+    var force = true;
+  }
+  const tm = document.getElementById('t-msgs');
+  const stick = force || (tm.scrollHeight - tm.scrollTop - tm.clientHeight < 60);
+  tm.innerHTML = cur.msgs.map(msgHtml).join("");
+  if(stick) tm.scrollTop = tm.scrollHeight;
+}
+function openThread(id){ activeChat = id; drawInbox(); }
+async function staffReply(){
+  const ta = document.getElementById('t-input'); if(!ta || !activeChat) return;
+  const body = ta.value.trim().slice(0,1000); if(!body) return;
+  ta.value = "";
+  const row = {chat_id:activeChat, sender:'staff', name:'Stork support', body};
+  if(sb){
+    const {error} = await sb.from('messages').insert(row);
+    if(error){ toast("Reply failed: "+error.message); ta.value = body; return; }
+  } else {
+    const a = localChat(); a.push({...row, id:Date.now()+Math.random(), created_at:new Date().toISOString()}); saveLocalChat(a);
+  }
+  await loadInbox(); updateChatCount(); drawInbox();
+}
+async function deleteChat(){
+  if(!activeChat || !confirm("Delete this whole conversation?")) return;
+  if(sb){
+    const {error} = await sb.from('messages').delete().eq('chat_id', activeChat);
+    if(error){ toast("Delete failed: "+error.message); return; }
+  } else saveLocalChat(localChat().filter(m=>m.chat_id!==activeChat));
+  activeChat = null; await loadInbox(); updateChatCount(); drawInbox(); toast("Chat deleted");
+}
+chatInit();
 
 // footer year
 document.getElementById('yr').textContent = new Date().getFullYear();
